@@ -4,7 +4,7 @@ import { listarPosts, postarNovoPost, uploadImagem, atualizarNovoPost} from "../
 import cors from "cors";
 
 const corsOption = {
-    origin: "htpp:localhost:8000",
+    origin: "http:localhost:8000",
     optionsSuccessStatus: 200
 }
 
@@ -21,7 +21,7 @@ const upload = multer({ storage: storage })
 
 const routes = (app) =>{
     app.use(express.json());
-    app.use(corsOption);
+    app.use(cors(corsOption));
     app.get("/posts", listarPosts);
     app.post("/posts", postarNovoPost );
     app.post("/upload", upload.single("imagem"), uploadImagem )
